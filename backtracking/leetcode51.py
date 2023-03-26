@@ -24,7 +24,6 @@ class Solution(object):
                 # path.pop()
             # return res
         
-
         # backtrack([],nums)
         backtrack([],set(),set())
         return [['.'*i+'Q'+'.'*(n-i-1)for i in queen]for queen in res]
@@ -56,9 +55,49 @@ class Solution(object):
         return result
 
 
+    def solveNQueens3(self,n):
+        result = []
+        board = [['.']*n for _ in range(n)]
+        cols = set()
+        negDiag = set()
+        posDiag = set()
+
+        def dfs(row):
+            # accept
+            if row == n:
+                rep_board = [''.join(r) for r in board]
+                result.append(rep_board)
+                return 
+            # expand
+            for col in range(n):
+                # purning
+                ## 1 同一列放过
+                ## 2 同对角线放过
+                ### 2.1 左对角线冲突
+                ### 2.2 右对角线冲突
+                if col in cols or \
+                    (row - col) in negDiag or \
+                    (row + col) in posDiag:
+                    continue
+                
+                cols.add(col)
+                negDiag.add(row-col)
+                posDiag.add(row+col)
+                board[row][col] = 'Q'
+
+                dfs(row + 1)
+
+                cols.remove(col)
+                negDiag.remove(row-col)
+                posDiag.remove(row+col)
+                board[row][col] = '.'
+                
+                          
+        dfs(0)
+        return result
 if __name__ == '__main__':
     solver = Solution()
     params = {
         "n":4,
     }
-    print(solver.solveNQueens(**params))
+    print(solver.solveNQueens3(**params))
