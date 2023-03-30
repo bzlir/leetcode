@@ -31,9 +31,6 @@ class Solution(object):
             path.remove((row,col))
             return res
 
-
-
-            return res
         
 
         for row in range(rows):
