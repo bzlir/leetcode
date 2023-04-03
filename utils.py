@@ -32,7 +32,9 @@ class PlanGenerator:
             if delta in [1,2,4,7,14]:
                 result.extend(self.data[key])
         
+
         return set(sorted(result))
+
     
 
 if __name__ == '__main__':
