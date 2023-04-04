@@ -15,7 +15,17 @@ class Solution(object):
             tmp = nums[i]
         return False
     
-
+    def containsDuplicate_by_gpt(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
 
 if __name__ == '__main__':
     solver = Solution()
