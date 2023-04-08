@@ -1,5 +1,7 @@
 from datetime import datetime
 import yaml
+
+
 def load_config(config_path: str) -> dict:
     try:
         with open(config_path, 'r') as f:
