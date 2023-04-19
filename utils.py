@@ -30,7 +30,7 @@ class PlanGenerator:
         result = []
         for key in self.data:
             date_obj = datetime.strptime(str(key), "%Y-%m-%d")
-            delta = (datetime.today() - date_obj).days - 3
+            delta = (datetime.today() - date_obj).days
 
             if delta in [1,2,4,7,14]:
                 result.extend(self.data[key])
